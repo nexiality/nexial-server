@@ -1,0 +1,43 @@
+{
+    "name": "nexial-server",
+    "version": "0.9.0",
+    "private": true,
+    "description": "Nexial Server, currently just an artifact hub (to replace S3)",
+    "keywords": [
+        "nexial",
+        "artifact",
+        "rest",
+        "nodejs",
+        "automation"
+    ],
+    "author": "automike <mikeliucc@gmail.com>",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nexiality/nexial-server.git"
+    },
+    "bugs": {
+        "url": "https://github.com/nexiality/nexial-server/issues"
+    },
+    "homepage": "https://github.com/nexiality/nexial-server#readme",
+    "scripts": {
+        "start": "node ./bin/www"
+    },
+    "main": "app.js",
+    "devDependencies": {},
+    "dependencies": {
+        "cookie-parser": "~1.4.3",
+        "cors": "^2.8.4",
+        "debug": "~2.6.9",
+        "del": "^3.0.0",
+        "express": "~4.16.0",
+        "hbs": "~4.0.1",
+        "http-errors": "~1.6.2",
+        "mkdirp": "^0.5.1",
+        "morgan": "~1.9.0",
+        "multer": "^1.4.1",
+        "rimraf": "^2.6.2",
+        "tmp": "0.0.33",
+        "yauzl": "^2.10.0"
+    }
+}
