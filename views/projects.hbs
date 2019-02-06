@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/w2ui-1.5.rc1.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <script src="/javascripts/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/w2ui-1.5.rc1.js"></script>
+</head>
+<body>
+
+<div id="rootContainer" style="height: 800px"></div>
+
+<script>
+    $(function () {
+        var data = {{{json this}}};
+
+        var siteTitle  = data.siteName + ' - ' + data.company;
+        document.title = siteTitle;
+        var contentTop =
+                '<div id="title" style="background-image:url(' + data.companyLogo + ')">' + siteTitle + '</div>';
+
+        var contentMain = '<ul id="projects-container">';
+        data.projects.forEach(p => {
+            contentMain += '<li><a href="' + p.rel + '/">';
+            var p_name = p.name;
+            var p_id   = p.id;
+            if (p.icon) {
+                contentMain += '<img src="' + p.icon + '" title="' + p_name + '" alt="' + p_name + '" align="middle"/>';
+            } else {
+                contentMain += '<div class="project-title" title="' + p_name + '">(' + p_id + ') ' + p_name + '</div>';
+            }
+
+            contentMain += '</a></li>';
+        });
+
+        contentMain += '</ul>';
+
+        var commonStyle = 'padding:5px;border:none;background-color:#fff';
+
+        $().w2layout({
+            name:     'rootContainer',
+            style:    'height:' + window.innerHeight + 'px',
+            panels:   [
+                {type: 'top', size: 87, resizable: false, style: commonStyle, content: contentTop},
+                {type: 'main', style: commonStyle, content: contentMain}
+            ],
+            onResize: function (event) { $('#rootContainer').height(window.innerHeight + 'px'); }
+        });
+
+        $('#rootContainer').w2render('rootContainer');
+    });
+</script>
+</body>
+</html>

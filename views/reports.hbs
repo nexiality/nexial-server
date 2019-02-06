@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/w2ui-1.5.rc1.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <script src="/javascripts/jquery-3.3.1.min.js"></script>
+    <script src="/javascripts/w2ui-1.5.rc1.js"></script>
+</head>
+<body>
+
+<div id="rootContainer" style="height: 800px"></div>
+
+<script>
+    $(function () {
+        var data = {{{json this}}};
+
+        // top pane
+        var siteTitle  = data.siteName + ' - ' + data.company;
+        document.title = siteTitle;
+        var contentTop =
+                '<div id="title" style="background-image:url(' + data.companyLogo + ')">' + siteTitle + '</div>';
+
+        // left pane
+        var jmeterReports = [];
+        data.reports.jmeter.forEach(r => {
+            jmeterReports.push({id: r.name, text: r.name, uri: r.rel, img: 'icon-jmeter'});
+        });
+
+        var nexialReports = [];
+        data.reports.nexial.forEach(r => {
+            nexialReports.push({id: r.name, text: r.name, uri: r.rel, img: 'icon-nexial'});
+        });
+
+        var reportSidebar = {
+            name:    'reports',
+            nodes:   [
+                {id: 'report-jmeter', text: 'JMeter', expanded: true, group: true, nodes: jmeterReports},
+                {id: 'report-nexial', text: 'Nexial', expanded: true, group: true, nodes: nexialReports}
+            ],
+            onClick: function (event) { displayReport(event.node.text, event.node.uri); }
+        };
+
+        var commonStyle = 'padding:5px;background-color:#fff;';
+
+        // entire layout
+        let layout = {
+            name:     'rootContainer',
+            padding:  0,
+            style:    'height:' + window.innerHeight + 'px',
+            panels:   [
+                {
+                    type:      'top',
+                    size:      70,
+                    resizable: false,
+                    style:     commonStyle,
+                    content:   contentTop
+                },
+                {
+                    type:      'left',
+                    size:      175,
+                    resizable: true,
+                    style:     commonStyle + 'border-right:2px solid #ccc;',
+                    title:     '<a href="/projects" class="back" title="Back">&laquo;</a><div id="project-title">' +
+                               data.project.name + '</div>'
+                },
+                {
+                    type:  'main',
+                    style: commonStyle
+                }
+            ],
+            onResize: function (event) { $('#rootContainer').height(window.innerHeight + 'px'); }
+        };
+
+        // render
+        $().w2layout(layout);
+        w2ui['rootContainer'].content('left', $().w2sidebar(reportSidebar));
+        $('#rootContainer').w2render('rootContainer');
+
+        // handle deep link
+        var deepLink = document.location.hash;
+        if (deepLink) {
+            deepLink = deepLink.substring(1);
+            if (deepLink) {
+                let reports = w2ui['reports'];
+                reports.select(deepLink);
+                reports.click(deepLink);
+            }
+        }
+    });
+
+    function displayReport(/*String*/title, /*String*/uri) {
+        let rootContainer               = w2ui['rootContainer'];
+        rootContainer.get('main').title = title;
+        rootContainer.html('main', '<iframe src="' + uri + '" class="report-frame"></iframe>');
+        rootContainer.show('main');
+    }
+</script>
+
+</body>
+</html>

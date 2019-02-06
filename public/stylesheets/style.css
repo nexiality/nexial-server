@@ -1,0 +1,269 @@
+body {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size:   11pt;
+    color:       #333;
+    padding:     0;
+    margin:      0;
+}
+
+a {
+    color:           #00b7ff;
+    text-decoration: none;
+}
+
+#rootContainer {
+    width: 100%;
+    /*height: 100%;*/
+}
+
+#title {
+    background-size:   150px !important;
+    background-repeat: no-repeat;
+    padding:           5px;
+    margin:            15px;
+    height:            45px;
+    font-size:         22pt;
+    font-weight:       bold;
+    text-align:        center;
+    vertical-align:    middle;
+    overflow:          hidden;
+}
+
+#underconstruction {
+    padding:          40px 40px 0 40px;
+    background-color: rgba(250, 250, 250, 0.5);
+    text-align:       center;
+}
+
+#construction-image-container {
+    max-height: 530px;
+    overflow:   hidden;
+}
+
+#construction-image-container image {
+    max-width: initial
+}
+
+#construction-text {
+    font-variant: all-petite-caps;
+    font-size:    30pt;
+    margin-top:   -120px;
+    color:        rgba(230, 190, 0, 0.95);
+    font-weight:  bold;
+    text-shadow:  #000 1px 1px 12px;
+}
+
+#projects-container {
+    margin:     0;
+    padding:    5px;
+    list-style: none;
+    display:    flex;
+    flex-wrap:  wrap;
+}
+
+#projects-container li {
+    margin: 20px;
+}
+
+#projects-container li a {
+    text-decoration:  none;
+    display:          flex;
+    align-items:      center;
+    justify-content:  center;
+    flex-direction:   column;
+    text-align:       center;
+    width:            100%;
+    height:           100%;
+    padding:          10px;
+    box-shadow:       4px 4px 15px rgba(5, 25, 25, 0.5);
+    border-radius:    15px;
+    filter:           grayscale(65%) opacity(50%) invert(5%);
+    background-color: rgba(235, 235, 235, 0.5);
+}
+
+#projects-container li a:hover {
+    box-shadow:       1px 1px 3px rgba(0, 0, 0, 1);
+    background-color: transparent;
+    filter:           none;
+}
+
+#projects-container li a img {
+    text-align: center;
+}
+
+#projects-container li a .project-title {
+    font-size:   14pt;
+    font-weight: bold;
+}
+
+#report-container {
+    padding:      5px;
+    width:        150px;
+    height:       100% !important;
+    border-right: 2px solid rgba(80, 80, 120, 0.65);
+}
+
+#report-container .project-title {
+    font-size:   12pt;
+    font-weight: bold;
+}
+
+#report-container .project {
+    width:  100%;
+    height: 100%;
+}
+
+#reports {
+    margin:  0;
+    padding: 5px 0 0 0;
+    height:  100%;
+}
+
+#reports li.report-link {
+    padding:         2px 0 0 2px;
+    margin:          0 -5px;
+    list-style-type: none;
+    cursor:          pointer;
+    color:           #00b7ff;
+    font-size:       14px;
+    text-align:      left;
+    white-space:     nowrap;
+    text-overflow:   ellipsis;
+    overflow:        hidden;
+}
+
+#reports li.report-link:hover {
+    color:            #008;
+    background-color: rgba(100, 120, 135, 0.3);
+    border-top:       1px solid #ccc;
+    border-bottom:    1px solid #ccc;
+    padding:          1px 0 0 2px;
+}
+
+#reports li.report-link img {
+    width:          24px;
+    vertical-align: middle;
+}
+
+.back, .close {
+    float:       left;
+    font-weight: bold;
+    cursor:      pointer;
+    position:    fixed;
+}
+
+.close {
+    float:       right;
+    margin:      0 35px;
+    font-weight: bold;
+    font-size:   16pt;
+}
+
+#report-detail {
+    background: white;
+    height:     100%;
+    width:      100%;
+    margin:     0;
+    padding:    0;
+}
+
+#report-detail object {
+    width:      100%;
+    height:     100%;
+    visibility: visible;
+}
+
+#error-container {
+    background-color: #fdd;
+    padding:          15px;
+    margin:           70px;
+    text-align:       center;
+    vertical-align:   middle;
+    font-weight:      bold;
+    color:            #a00;
+    font-size:        10pt;
+}
+
+.w2ui-panel-title .back {
+    position: relative;
+    top:      0;
+    left:     0;
+}
+
+.w2ui-panel-title #project-title {
+    text-align:    center;
+    font-weight:   bold;
+
+    overflow:      hidden;
+    text-overflow: ellipsis;
+    white-space:   nowrap;
+}
+
+.w2ui-panel, .w2ui-panel-content {
+    overflow: hidden !important;
+}
+
+.w2ui-panel-content {
+    padding: 0 !important;
+}
+
+.report-frame {
+    width:  100%;
+    height: 100%;
+    border: none;
+}
+
+/* w2ui customization */
+.w2ui-icon.icon-jmeter {
+    background:      url(../images/jmeter-icon.png) no-repeat center !important;
+    background-size: 20px !important;
+    margin-left:     10px;
+}
+
+.w2ui-icon.icon-nexial {
+    background:      url(../images/nexial-icon.png) no-repeat center !important;
+    background-size: 16px !important;
+    margin-left:     10px;
+}
+
+#rootContainer .w2ui-node-dots {
+    display: none !important;
+}
+
+#rootContainer .w2ui-sidebar .w2ui-sidebar-div .w2ui-node .w2ui-node-data .w2ui-node-caption {
+    margin-left: 20px !important;
+}
+
+/* based on the id/name given to the referenced sidebar group */
+/*#rootContainer #node_report-jmeter_sub {*/
+/*background-image:      url(/images/jmeter-icon.png) !important;*/
+/*background-color:      rgba(239, 241, 246, 0.75) !important;*/
+/*background-blend-mode: soft-light;*/
+/*background-repeat:     repeat-y;*/
+/*background-position:   center;*/
+/*}*/
+
+/*#rootContainer .w2ui-sidebar .w2ui-sidebar-div .w2ui-node {*/
+/*background-color: transparent !important;*/
+/*}*/
+
+/*#rootContainer .w2ui-node-sub .w2ui-node {*/
+/*margin-left: -10px;*/
+/*}*/
+
+#rootContainer .w2ui-sidebar .w2ui-sidebar-div .w2ui-node:hover {
+    border-top:       1px solid #d7e1ef !important;
+    border-bottom:    1px solid #d7e1ef !important;
+    background-color: rgba(219, 221, 226, 0.55) !important;
+}
+
+#rootContainer .w2ui-sidebar .w2ui-sidebar-div .w2ui-selected,
+#rootContainer .w2ui-sidebar .w2ui-sidebar-div .w2ui-selected:hover {
+    position:         relative;
+    background-image: -webkit-linear-gradient(rgba(65, 137, 204, .35), rgba(34, 110, 171, .35)) !important;
+    background-image: -moz-linear-gradient(rgba(65, 137, 204, .35), rgba(34, 110, 171, .35)) !important;
+    background-image: -ms-linear-gradient(rgba(65, 137, 204, .35), rgba(34, 110, 171, .35)) !important;
+    background-image: -o-linear-gradient(rgba(65, 137, 204, .35), rgba(34, 110, 171, .35)) !important;
+    background-image: linear-gradient(rgba(65, 137, 204, .35), rgba(34, 110, 171, .35)) !important;
+    filter:           progid:dximagetransform.microsoft.gradient(startColorstr='#ff69b1e0', endColorstr='#ff4a96d3', GradientType=0);
+}

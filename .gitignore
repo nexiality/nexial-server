@@ -59,3 +59,10 @@ typings/
 
 # next.js build output
 .next
+
+.DS_Store
+.archive/
+todo.txt
+package-lock.json
+*.iml
+deploy-to-csqpyweb101.sh
